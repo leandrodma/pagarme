@@ -1,16 +1,16 @@
-const koa = require('express')
+const express = require('express')
 
 class PSP{
   constructor() {
-    this.koa = new koa()
+    this.express = new express()
 
     this.routes()
   }
 
   routes() {
-    this.koa.use(require("./routes"));
+    this.express.use(require("./routes"));
   }
 }
 
 
-module.exports = new PSP().koa
+module.exports = new PSP().express
