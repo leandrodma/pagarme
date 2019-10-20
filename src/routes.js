@@ -1,11 +1,7 @@
-const Router = require('koa-router');
+const routes = require("express").Router();
 
-const routes = new Router();
-
-routes.get('/', ctx => {
-  ctx.body = '<p>Exibe documentação do projeto</p>';
+routes.get('/healthcheck', function (req, res, next) {
+	res.json({status: 'UP'});
 });
 
-routes.allowedMethods()
-
-module.exports = routes.routes();
+module.exports = routes;
