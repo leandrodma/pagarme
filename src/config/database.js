@@ -1,4 +1,4 @@
-require('dotenv').config({ path: process.env.NODE_ENV ===  'test' ? './env.test' : './env'})
+require('dotenv').config({ path: process.env.NODE_ENV ===  'test' ? '.env.test' : '.env'})
 
 module.exports = {
   username: process.env.DB_USERNAME,
@@ -6,9 +6,10 @@ module.exports = {
   database: process.env.DB_NAME,
   host: process.env.DB_HOST,
   dialect: process.env.DB_DIALECT,
-  storage: "./database/database.sqlite",
-  operatorsAliases: false,
+  storage: "./src/database/database.sqlite",
   define: {
     timestamps: true,
+    underscored: true,
+    underscoredAll: true
   }
 }

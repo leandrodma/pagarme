@@ -61,4 +61,4 @@ typings/
 .next
 
 # SQLite Database
-.sqlite
+*.sqlite
