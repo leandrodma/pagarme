@@ -1,9 +1,11 @@
+require('dotenv').config({ path: process.env.NODE_ENV ===  'test' ? './env.test' : './env'})
+
 module.exports = {
-  username: "root",
-  password: null,
-  database: "psp",
-  host: "127.0.0.1",
-  dialect: "sqlite",
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
+  dialect: process.env.DB_DIALECT,
   storage: "./database/database.sqlite",
   operatorsAliases: false,
   define: {
