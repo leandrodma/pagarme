@@ -6,8 +6,7 @@ module.exports = {
   database: process.env.DB_NAME,
   host: process.env.DB_HOST,
   dialect: process.env.DB_DIALECT,
-  storage: "./database/database.sqlite",
-  operatorsAliases: false,
+  storage: "./src/database/database.sqlite",
   define: {
     timestamps: true,
     underscored: true,
