@@ -1,5 +1,5 @@
 const request = require('supertest')
-const app = require('../../../src/app');
+const app = require('../../../src/app/app');
 
 // fecha as conexões com o servidor, quando terminar os testes
 
