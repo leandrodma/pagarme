@@ -5,7 +5,11 @@ module.exports = {
 
     return queryInterface.createTable('client', 
       {
-        id: Sequelize.INTEGER,
+        id: {
+          type: Sequelize.INTEGER,
+          autoIncrement: true,
+          primaryKey: true
+        },
         name: Sequelize.STRING,
         waiting_funds: {
           type: Sequelize.FLOAT,
@@ -17,8 +21,8 @@ module.exports = {
           allowNull: false,
           defaultValue: 0
         },
-        createdAt: Sequelize.DATE,
-        updatedAt: Sequelize.DATE
+        created_at: Sequelize.DATE,
+        updated_at: Sequelize.DATE
       }
 
     );
