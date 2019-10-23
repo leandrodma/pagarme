@@ -11,20 +11,22 @@ describe('Testes de endpoints da aplicação', () => {
       expect(response.body).toEqual({ status: 'UP' })
     });
 
-    test('Testa rota de checkout', async () => {
-      await request(app)
-            .post('/clients/1/checkout')
-            .expect(200)
-    });
+    // test('Testa rota de checkout', async () => {
+    //   await request(app)
+    //         .post('/clients/1/checkout')
+    //         .expect(200)
+    // });
 });
 
 describe('Testes para o checkout', () => {
   test('Teste de payload no checkout com cliente inválido', async () => {
+
    await Client.max('id').then( async (lastClient) => {
       const newerClient = lastClient || 1
       await request(app)
             .post(`/clients/${newerClient}/checkout`)
             .expect(404)
     })
+
   })
 })
