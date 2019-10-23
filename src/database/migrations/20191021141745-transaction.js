@@ -34,7 +34,7 @@ module.exports = {
         defaultValue:false,
       },
       card_expirate_date:{
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull:false,
         defaultValue:false,
       },

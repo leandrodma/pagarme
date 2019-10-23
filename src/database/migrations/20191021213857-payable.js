@@ -15,7 +15,7 @@ module.exports = {
         defaultValue: false
       },
       transaction_id:{
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: false
       },
