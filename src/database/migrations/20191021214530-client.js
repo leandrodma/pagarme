@@ -6,18 +6,18 @@ module.exports = {
     return queryInterface.createTable('client', 
       {
         id: {
-          type: Sequelize.INTEGER,
-          autoIncrement: true,
-          primaryKey: true
+          type: Sequelize.UUID,
+          primaryKey: true,
+          allowNull: false
         },
         name: Sequelize.STRING,
         waiting_funds: {
-          type: Sequelize.FLOAT,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           defaultValue: 0
         },
         available_founds: {
-          type: Sequelize.FLOAT,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           defaultValue: 0
         },

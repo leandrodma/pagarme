@@ -6,14 +6,11 @@ module.exports = {
    return queryInterface.createTable('transaction', 
     {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-        defaultValue: false
       },
       payment_method:{
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM('debit','credit'),
         allowNull: false,
         defaultValue: false
       },
@@ -39,18 +36,18 @@ module.exports = {
         defaultValue:false,
       },
       card_cvv: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         size:3,
         allowNull:false,
         defaultValue: false,
       },
       value: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER.UNSIGNED,
         allowNull:false,
         defaultValue: false,
       },
       fee: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER.UNSIGNED,
         size:2,
         allowNull:false,
         defaultValue: false,

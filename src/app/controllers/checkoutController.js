@@ -1,4 +1,2 @@
 
-class checkoutController{
-	async 
-}
+class checkoutController{}

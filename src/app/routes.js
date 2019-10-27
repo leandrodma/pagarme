@@ -1,4 +1,6 @@
-const {clientController} = require('../app/controllers')
+const {Client} = require('../app/models')
+
+const transactionController = require('../app/controllers/transactionController')
 
 const routes = require("express").Router();
 
@@ -6,7 +8,9 @@ routes.get('/healthcheck', function (req, res, next) {
 	res.json({status: 'UP'});
 });
 
-routes.post('/clients/:clientID/checkout', clientController);
+routes.post('/clients/:clientID/checkout', transactionController.create);
+
+// Client.findAll().then();
 
 module.exports = routes;
 
