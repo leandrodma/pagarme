@@ -10,7 +10,5 @@ routes.get('/healthcheck', function (req, res, next) {
 
 routes.post('/clients/:clientID/checkout', transactionController.create);
 
-// Client.findAll().then();
-
 module.exports = routes;
 

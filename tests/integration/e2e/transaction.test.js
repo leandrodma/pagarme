@@ -1,19 +1,28 @@
 const request = require('supertest')
-const app = require('../../../src/app/app');
+const app = require('../../../src/app/app')
+const {Client} = require('../../../src/app/models')
 
 const PayloadTransaction = require('./transaction')
 
 describe('Testes Referente a transação',  () => {
 	
-	test('Cria uma nova transação', (done) => {
-    //Client.create({ id: 'fakeID', name: 'Jhon Doe'})
-		console.log('trace 1')
-		return request(app)
+	test('Tenta criar uma transação com um cliente inválido', async () => {
+
+		await request(app)
 					.post('/clients/fakeID/checkout')
 					.send(PayloadTransaction)
 					.set('Accept', /application\/json/)
-					.expect(201, done)
+					.expect(404)
+	})
+
+	test('Cria uma nova transação', async () => {
+
+		await Client.create({ id: 'fakeID', name: 'Jhon Doe'})
+		
+		await request(app)
+					.post('/clients/fakeID/checkout')
+					.send(PayloadTransaction)
+					.set('Accept', /application\/json/)
+					.expect(201)
 	})
 })
-
-jest.setTimeout(30000)

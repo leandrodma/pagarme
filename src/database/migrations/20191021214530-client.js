@@ -8,7 +8,7 @@ module.exports = {
         id: {
           type: Sequelize.UUID,
           primaryKey: true,
-          allowNull: false
+          allowNull: false,
         },
         name: Sequelize.STRING,
         waiting_funds: {
@@ -24,7 +24,6 @@ module.exports = {
         created_at: Sequelize.DATE,
         updated_at: Sequelize.DATE
       }
-
     );
   },
 

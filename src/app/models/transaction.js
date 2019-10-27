@@ -2,8 +2,12 @@ const Payable = require('./payable')
 
 module.exports = (Sequelize, DataTypes) => {
 	
-	const Transaction = Sequelize.define('Transaction',{
-		id: {type: DataTypes.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true},
+	const Transaction = Sequelize.define('Transaction', {
+		id: {
+			type: DataTypes.INTEGER.UNSIGNED, 
+			primaryKey: true, 
+			autoIncrement: true
+		},
 		client_id: DataTypes.INTEGER.UNSIGNED,
 		payment_method: DataTypes.STRING,
 		description: DataTypes.STRING,
