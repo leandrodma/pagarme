@@ -1,14 +1,19 @@
+const uuid = require('uuid/v4')
 
 module.exports = (Sequelize, DataTypes) => {
 	
-	const Payable = Sequelize.define('Payable',{
-		id: {type: DataTypes.INTEGER.UNSIGNED, primaryKey: true, autoIncrement: true},
-		transaction_id: DataTypes.INTEGER.UNSIGNED,
+	const payable = Sequelize.define('payable',{
+		id: {
+			type: DataTypes.UUID, 
+			primaryKey: true, 
+			defaultValue: uuid()
+		},
+		transaction_id: DataTypes.UUID,
 		payment_date: DataTypes.DATE,
-		value: DataTypes.FLOAT,
-		status: DataTypes.STRING,
+		value: DataTypes.INTEGER.UNSIGNED,
+		status: DataTypes.ENUM('waiting_funds', 'paid')
 	});
 
-	return Payable
+	return payable
 }
 

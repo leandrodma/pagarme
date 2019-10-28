@@ -3,7 +3,7 @@ const request = require('supertest')
 const app = require('../../../src/app/app')
 const {client} = require('../../../src/app/models')
 
-const PayloadTransaction = require('../..//transaction')
+const PayloadTransaction = require('../../transaction')
 
 describe('Testes Referente a transação',  () => {
 	
