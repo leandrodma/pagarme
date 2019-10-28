@@ -1,5 +1,7 @@
 'use strict';
 
+const uuid = require('uuid/v4')
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
@@ -9,6 +11,7 @@ module.exports = {
           type: Sequelize.UUID,
           primaryKey: true,
           allowNull: false,
+          defaultValue: uuid()
         },
         name: Sequelize.STRING,
         waiting_funds: {
@@ -21,8 +24,14 @@ module.exports = {
           allowNull: false,
           defaultValue: 0
         },
-        created_at: Sequelize.DATE,
-        updated_at: Sequelize.DATE
+        created_at: {
+          type: Sequelize.DATE,
+          allowNull: false
+        },
+        updated_at: {
+          type: Sequelize.DATE,
+          allowNull: false
+        }
       }
     );
   },

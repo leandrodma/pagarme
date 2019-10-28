@@ -8,18 +8,10 @@ module.exports = {
         type: Sequelize.UUID,
         primaryKey: true,
       },
-      client_id: {
-        type: Sequelize.UUID,
-        references: {
-          model: 'Client', 
-          key: 'id',
-        },
-        onUpdate: 'CASCADE',
-      },
       transaction_id:{
         type: Sequelize.UUID,
         references: {
-          model: 'Transaction', 
+          model: 'transaction', 
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -28,12 +20,10 @@ module.exports = {
       value: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
-        defaultValue: false
       },
       status:{
         type: Sequelize.ENUM('waiting_funds', 'paid'),
         allowNull: false,
-        defaultValue: false
       },
       created_at: {
         type: Sequelize.DATE
