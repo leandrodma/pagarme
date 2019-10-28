@@ -1,7 +1,7 @@
 const uuid = require('uuid/v4')
 const request = require('supertest')
 const app = require('../../../src/app/app')
-const {Client} = require('../../../src/app/models')
+const {client} = require('../../../src/app/models')
 
 const PayloadTransaction = require('./transaction')
 
@@ -18,7 +18,7 @@ describe('Testes Referente a transação',  () => {
 
 	test('Cria uma nova transação com um cliente válido', async () => {
 
-		const newerClient = await Client.create({ name: 'Jane Doe'}) 
+		const newerClient = await client.create({ name: 'Jane Doe'}) 
 
 		const transaction = await request(app)
 					.post(`/clients/${newerClient.id}/checkout`)

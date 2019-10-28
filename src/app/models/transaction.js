@@ -4,15 +4,11 @@ const uuid = require('uuid/v4')
 
 module.exports = (Sequelize, DataTypes) => {
 	
-	const Transaction = Sequelize.define('Transaction', {
+	const transaction = Sequelize.define('transaction', {
 		id: {
 			type: DataTypes.UUID, 
 			primaryKey: true, 
 			defaultValue: uuid()
-		},
-		client_id: {
-			type: DataTypes.UUID,
-			
 		},
 		payment_method: {
 			type: DataTypes.STRING,
@@ -43,6 +39,6 @@ module.exports = (Sequelize, DataTypes) => {
 		fee: DataTypes.INTEGER(2)
 	});
 
-	return Transaction
+	return transaction
 }
 

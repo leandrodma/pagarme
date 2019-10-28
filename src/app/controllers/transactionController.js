@@ -1,4 +1,4 @@
-const {Client, Transaction} = require('../models/')
+const {client, transaction} = require('../models/')
 
 class TransactionController{
 
@@ -6,15 +6,15 @@ class TransactionController{
 
 		try {
 
-			const client = await Client.findByPk(req.params.clientID);
+			const clientTransaction = await client.findByPk(req.params.clientID);
 
-			if(!client) throw Error('Client not found')
+			if(!clientTransaction) throw Error('Client not found')
 			
 			req.body.client_id = client.id;
 
-			const transaction = await Transaction.create( req.body );
+			const newTransaction = await transaction.create( req.body );
 			
-			return res.status(201).json(transaction)
+			return res.status(201).json(newTransaction)
 
 		} catch (error) {	
 			return res.status(404).send(`${error.message}`);

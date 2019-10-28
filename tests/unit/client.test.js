@@ -1,7 +1,7 @@
-const {Client} = require('../../src/app/models')
+const {client} = require('../../src/app/models')
 
 describe('Teste entidade Cliente', () => {
   test('Cria um cliente novo', async () => {
-		await Client.create({ name: 'Jhon Doe'})
+		await client.create({ name: 'Jhon Doe'})
 	})
 })
