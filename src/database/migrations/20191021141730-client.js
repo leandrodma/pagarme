@@ -1,26 +1,38 @@
 'use strict';
 
+const uuid = require('uuid/v4')
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
     return queryInterface.createTable('client', 
       {
-        id: Sequelize.INTEGER,
+        id: {
+          type: Sequelize.UUID,
+          primaryKey: true,
+          allowNull: false,
+          defaultValue: uuid()
+        },
         name: Sequelize.STRING,
         waiting_funds: {
-          type: Sequelize.FLOAT,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           defaultValue: 0
         },
         available_founds: {
-          type: Sequelize.FLOAT,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           defaultValue: 0
         },
-        createdAt: Sequelize.DATE,
-        updatedAt: Sequelize.DATE
+        created_at: {
+          type: Sequelize.DATE,
+          allowNull: false
+        },
+        updated_at: {
+          type: Sequelize.DATE,
+          allowNull: false
+        }
       }
-
     );
   },
 

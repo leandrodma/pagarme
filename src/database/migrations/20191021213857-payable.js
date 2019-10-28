@@ -5,35 +5,30 @@ module.exports = {
     return queryInterface.createTable('payable', 
     { 
       id:{
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-      },
-      client_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: false
+        type: Sequelize.UUID,
+        primaryKey: true,
       },
       transaction_id:{
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: false
+        type: Sequelize.UUID,
+        references: {
+          model: 'transaction', 
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
       },
       payment_date: Sequelize.DATE,
       value: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
-        defaultValue: false
       },
       status:{
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM('waiting_funds', 'paid'),
         allowNull: false,
-        defaultValue: false
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE
       }
     });

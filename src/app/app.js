@@ -5,6 +5,8 @@ class PSP{
   constructor() {
     this.express = new express()
 
+    this.express.use(express.json());
+
     this.routes()
   }
 
