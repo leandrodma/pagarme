@@ -1,4 +1,4 @@
-const {Client} = require('../app/models')
+const uuid = require('uuid/v4')
 
 const transactionController = require('../app/controllers/transactionController')
 
