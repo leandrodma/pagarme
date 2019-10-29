@@ -1,7 +1,9 @@
 # Payment Service Provider (PSP)
 
 [![N|Solid](https://pagar.me/static/logo_pagarme-7f30803956c8405d6bd8dce37e6ff06f.svg)](https://pagar.me)
-Mais informações [README.md](https://github.com/pagarme/vagas/blob/master/desafios/software-engineer-backend/README.md)
+
+
+###### Mais informações [README.md](https://github.com/pagarme/vagas/blob/master/desafios/software-engineer-backend/README.md)
 
 ### Dependência
 ___
@@ -18,10 +20,12 @@ $ yarn install
 ### Configuração
 ___
 O projeto utiliza os arquivos de configuração: `.env` 
+
+
 | Arquivo | Ambiente |
 | ------ | ------ |
-| `.env` | *PRODUÇÂO* |
-| `.env.test` | *DESENVOLVIMENTO*  |
+| `env` | *PRODUÇÃO* |
+| `.env.test` | *DESENVOLVIMENTO* | 
 
 #### Para a produção
 >Para produção é necessário setar o banco de dados (*postgres*)
