@@ -49,6 +49,7 @@ docker run --name postgres -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -d postg
 ___
 Executa a aplicação em modo de desenvolvimento
 ```sh
+$ NODE_ENV=test yarn sequelize db:migrate
 $ yarn dev
 ```
 > Por padrão a aplicação fica exposta em http://localhost:3000, para alterar, basta configurar o arquivo `.env.test` na raiz do projeto
