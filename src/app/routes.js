@@ -1,5 +1,3 @@
-const uuid = require('uuid/v4')
-
 const transactionController = require('../app/controllers/transactionController')
 
 const routes = require("express").Router();
