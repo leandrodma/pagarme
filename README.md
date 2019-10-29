@@ -63,7 +63,9 @@ $ yarn test
 
 ### Executando a aplicação em PROD
 ___
-Executa a aplicação em modo de desenvolvimento
+>*Atenção:* É necessário a cópia das tabelas do banco de desenvolvimento para o de produção, uma vez que as _migrations_ não rodam em ambiente produtivo
+
+Executa a aplicação em modo de produção
 ```sh
 $ NODE_ENV=production node src/app/server.js
 ```
