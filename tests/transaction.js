@@ -1,5 +1,5 @@
 module.exports = {
-	value: 10054,
+	value: 10000,
 	description: 'Smartband XYZ 3.0',
 	card_number: '5536044136482387',
 	card_name: 'John Doe',

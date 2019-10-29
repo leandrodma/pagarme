@@ -1,6 +1,5 @@
 
-const {CREDIT_CARD_FEE, DEBIT_CARD_FEE} = require('../../config/config')
-const uuid = require('uuid/v4')
+const {DEBIT, CREDIT} = require('../../config/config')
 
 module.exports = (Sequelize, DataTypes) => {
 	
@@ -8,20 +7,23 @@ module.exports = (Sequelize, DataTypes) => {
 		id: {
 			type: DataTypes.UUID, 
 			primaryKey: true, 
-			defaultValue: uuid()
+			defaultValue: DataTypes.UUIDV4
 		},
+		client_id: DataTypes.UUID,
 		payment_method: {
 			type: DataTypes.STRING,
-			validate:{ isIn: [['debit_card', 'credit_card']]},
 			set(value){
 				this.setDataValue('payment_method', value)
-				this.setDataValue( 'fee', (value === 'debit_card') ? DEBIT_CARD_FEE : CREDIT_CARD_FEE )
+				this.setDataValue( 'fee', (value === DEBIT.CARD) ? DEBIT.FEE : CREDIT.FEE )
 			}
 		},
 		description: DataTypes.STRING,
 		card_number:{ 
 			type: DataTypes.STRING,
-			isCreditCard: true
+			isCreditCard: true,
+			set(value){
+				this.setDataValue('card_number', value.substr(-4));
+			}
 		},
 		card_name: DataTypes.STRING,
 		card_valid_thru: {
@@ -34,9 +36,9 @@ module.exports = (Sequelize, DataTypes) => {
 				this.setDataValue('card_valid_thru', expiration_date.toString());
 			}
 		},
-		card_cvv: DataTypes.INTEGER(3).ZEROFILL,
-		value: DataTypes.INTEGER.UNSIGNED,
-		fee: DataTypes.INTEGER(2)
+		card_cvv: {type: DataTypes.INTEGER, size: 3},
+		value: DataTypes.INTEGER,
+		fee: {type: DataTypes.INTEGER, size:2}
 	});
 
 	return transaction
