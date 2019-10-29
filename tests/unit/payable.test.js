@@ -1,16 +1,20 @@
-const payload = require('../transaction')
+const {CREDIT, DEBIT} = require('../../src/config/config')
 const {client, transaction, payable} = require('../../src/app/models')
+const transactionPayload = require('../transaction')
+const payablePayload = require('../payable')
 
 describe('Teste entidade Payable', () => {
-  test('Cria uma nova e verifica se o pagamento foi incluido ', async () => {
+  test('Cria uma nova transação e um novo pagamento', async () => {
 		const newClient = await client.create({ name: 'Joana Doe'})
+		transactionPayload.client_id = newClient.id
 
-		payload.client_id = newClient.id
-		const newTransaction = await transaction.create(payload)
+		const newTransaction = await transaction.create(transactionPayload)
 
-		const countPayable = await payable.findOne({where: {transaction_id: newTransaction.id}})
+		payablePayload.transaction_id = newTransaction.id
 
-		expect(countPayable).not.toBeNull()
+		const newPayable = payable.create(payablePayload)
 
+		expect(newPayable).not.toBeNull()
 	})
+
 })
