@@ -7,7 +7,9 @@ describe('Teste entidade Transaction', () => {
 
 		payload.client_id = newClient.id
 
-		await transaction.create(payload)
+		const newTransaction = await transaction.create(payload)
+
+		expect(newTransaction).not.toBeNull()
 
 	})
 })
