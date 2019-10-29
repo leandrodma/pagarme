@@ -56,8 +56,6 @@ class TransactionController {
 	}
 }
 
-
-
 TransactionController._calculateFee = function (value, fee) {
 	return (value - (value * (fee / 100)))
 }
@@ -65,27 +63,22 @@ TransactionController._calculateFee = function (value, fee) {
 TransactionController._makePayablePayload = function (newTransaction) {
 	let valueTransactionDiscounted = 0
 	let payableStatus = ''
-	let payableDate = ''
-	let date = new Date()
+	let payableDate = new Date()
 
 	if (newTransaction.payment_method === DEBIT.CARD) {
-		date.setDate(date.getDate() + DEBIT.DAYS_TO_PAY);
+		payableDate.setDate(payableDate.getDate() + DEBIT.DAYS_TO_PAY);
 
 		valueTransactionDiscounted = this._calculateFee(newTransaction.value, DEBIT.FEE)
 		payableStatus = DEBIT.PAYMENT_STATUS
-		payableDate = date
 	} else {
-		date.setDate(date.getDate() + CREDIT.DAYS_TO_PAY);
-
+		payableDate.setDate(payableDate.getDate() + CREDIT.DAYS_TO_PAY);
 		valueTransactionDiscounted = TransactionController._calculateFee(newTransaction.value, CREDIT.FEE)
 		payableStatus = CREDIT.PAYMENT_STATUS
-		payableDate = date
 	}
-
-	payableDate = `${payableDate.getFullYear()}-${payableDate.getMonth()}-${payableDate.getDate()}`
 
 	return {
 		transaction_id: newTransaction.id,
+		client_id: newTransaction.client_id,
 		payment_date: payableDate,
 		value: valueTransactionDiscounted,
 		status: payableStatus

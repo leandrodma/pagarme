@@ -18,9 +18,17 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
       },
-      payment_date: Sequelize.DATE,
+      client_id:{
+        type: Sequelize.UUID,
+        references: {
+          model: 'client', 
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+      },
+      payment_date: Sequelize.DATEONLY,
       value: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       status:{
